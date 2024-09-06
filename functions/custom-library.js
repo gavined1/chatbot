@@ -1,5 +1,6 @@
 const nlp = require('compromise');
 const spacy = require('spacy');
+const data = require('./data');
 
 // Load spaCy model
 const nlpSpaCy = spacy.load('en_core_web_sm');
@@ -7,7 +8,7 @@ const nlpSpaCy = spacy.load('en_core_web_sm');
 function processText(text) {
     // Use compromise for basic text processing
     let doc = nlp(text);
-    let response = "I'm not sure how to respond to that.";
+    let response = data.responses.fallback;
 
     // Use spaCy for more advanced NLP tasks
     const spacyDoc = nlpSpaCy(text);
@@ -20,7 +21,7 @@ function processText(text) {
         // Use compromise for simple intent recognition
         const match = doc.match('hello|hi|hey');
         if (match.found) {
-            response = "Hello! How can I assist you today?";
+            response = data.responses.greeting;
         }
     }
 

@@ -5,86 +5,36 @@ const stringSimilarity = require('string-similarity');
 const dataset = require('./data.js'); // Import the dataset from data.js
 
 const token = process.env.TELEGRAM_TOKEN;
-const bot = new TelegramBot(token);
+const bot = new TelegramBot(token, {
+    polling: true
+}); // Enable polling to receive updates
 
-function normalizeInput(input) {
-    const doc = nlp(input.toLowerCase()).normalize({
-        whitespace: true,
-        punctuation: true
-    }).out('text');
-    return doc;
+// Function to find the best response from the dataset
+function findBestResponse(input) {
+    // Normalize and process the input with NLP
+    const normalizedInput = nlp(input).normalize().out('text');
+
+    // Extract just the texts (patterns) from the dataset
+    const patterns = dataset.map(item => item.pattern);
+
+    // Find the closest matching pattern using string similarity
+    const bestMatch = stringSimilarity.findBestMatch(normalizedInput, patterns);
+
+    // Get the best match response
+    const responseIndex = bestMatch.bestMatchIndex;
+    return dataset[responseIndex]?.response || "Sorry, I didn't understand that.";
 }
 
-function findResponse(userMessage) {
-    const normalizedMessage = normalizeInput(userMessage);
-    let bestMatch = {
-        score: 0,
-        response: "Sorry, I didn't understand that. Can you please rephrase?"
-    };
+// Listen for incoming messages
+bot.on('message', (msg) => {
+    const chatId = msg.chat.id;
+    const userMessage = msg.text;
 
-    for (const item of dataset) {
-        const inputVariants = Array.isArray(item.input) ? item.input : [item.input];
+    // Find the best response
+    const response = findBestResponse(userMessage);
 
-        for (const variant of inputVariants) {
-            const score = stringSimilarity.compareTwoStrings(normalizedMessage, normalizeInput(variant));
-            if (score > bestMatch.score) {
-                bestMatch.score = score;
-                bestMatch.response = Array.isArray(item.response) ?
-                    item.response[Math.floor(Math.random() * item.response.length)] :
-                    item.response;
-            }
-        }
-    }
+    // Send the response to the user
+    bot.sendMessage(chatId, response);
+});
 
-    return bestMatch.response;
-}
-
-exports.handler = async (event) => {
-    try {
-        if (event.httpMethod === 'POST') {
-            const {
-                body
-            } = event;
-            const update = JSON.parse(body);
-
-            if (update.message) {
-                const chatId = update.message.chat.id;
-                const userMessage = update.message.text;
-                const chatType = update.message.chat.type;
-
-                if (!userMessage || userMessage.startsWith('/')) return;
-
-                let responseText = '';
-
-                if (chatType === 'private' || chatType === 'group' || chatType === 'supergroup') {
-                    responseText = findResponse(userMessage);
-                    await bot.sendMessage(chatId, responseText);
-                } else if (chatType === 'channel') {
-                    await bot.sendMessage(chatId, "I'm currently not set up to respond in channels.");
-                }
-
-                return {
-                    statusCode: 200,
-                    body: JSON.stringify({
-                        message: 'Success'
-                    }),
-                };
-            }
-        }
-
-        return {
-            statusCode: 400,
-            body: JSON.stringify({
-                message: 'Bad Request'
-            }),
-        };
-    } catch (error) {
-        console.error('Error handling webhook:', error);
-        return {
-            statusCode: 500,
-            body: JSON.stringify({
-                message: 'Internal Server Error'
-            }),
-        };
-    }
-};
+console.log('Bot is up and running...');

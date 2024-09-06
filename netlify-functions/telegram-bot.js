@@ -5,55 +5,62 @@ const stringSimilarity = require('string-similarity');
 const dataset = require('./data.js'); // Import the dataset from data.js
 
 const token = process.env.TELEGRAM_TOKEN;
-const bot = new TelegramBot(token, {
-    polling: true
-}); // Enable polling to receive updates
+const bot = new TelegramBot(token);
 
 // Function to find the best response from the dataset
 function findBestResponse(input) {
-    // Normalize and process the input with NLP
     const normalizedInput = nlp(input).normalize().out('text');
-
-    // Extract just the texts (patterns) from the dataset
     const patterns = dataset.map(item => item.pattern);
-
-    // Find the closest matching pattern using string similarity
     const bestMatch = stringSimilarity.findBestMatch(normalizedInput, patterns);
-
-    // Get the best match response
     const responseIndex = bestMatch.bestMatchIndex;
     return dataset[responseIndex]?.response || "Sorry, I didn't understand that.";
 }
 
-// Listen for incoming messages
-bot.on('message', (msg) => {
-    const chatId = msg.chat.id;
-    const userMessage = msg.text;
+// This is the function that will handle the incoming updates
+async function handleUpdate(update) {
+    const chatId = update.message.chat.id;
+    const userMessage = update.message.text;
 
-    // Find the best response
     const response = findBestResponse(userMessage);
+    await bot.sendMessage(chatId, response);
+}
 
-    // Send the response to the user
-    bot.sendMessage(chatId, response);
-});
-// netlify-functions/telegram-bot.js
+// Netlify function to handle the webhook
 exports.handler = async (event, context) => {
-    try {
-        // Your bot logic goes here
+    if (event.httpMethod === 'POST') {
+        try {
+            const update = JSON.parse(event.body);
+            await handleUpdate(update);
+
+            return {
+                statusCode: 200,
+                body: JSON.stringify({
+                    message: "Update handled successfully"
+                }),
+            };
+        } catch (error) {
+            console.error('Error handling update:', error);
+            return {
+                statusCode: 500,
+                body: JSON.stringify({
+                    error: "Failed to handle update"
+                }),
+            };
+        }
+    } else {
         return {
-            statusCode: 200,
+            statusCode: 405,
             body: JSON.stringify({
-                message: "Function executed successfully"
-            }),
-        };
-    } catch (error) {
-        return {
-            statusCode: 500,
-            body: JSON.stringify({
-                error: "Function failed to execute"
+                error: "Method not allowed"
             }),
         };
     }
 };
 
-console.log('Bot is up and running...');
+// Set webhook URL
+async function setWebhook() {
+    const url = `https://magenta-vacherin-fcf7f7.netlify.app/.netlify/functions/telegram-bot`; // Replace with your Netlify function URL
+    await bot.setWebHook(url);
+}
+
+setWebhook().catch(console.error);

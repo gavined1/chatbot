@@ -14,6 +14,8 @@ const processMessage = (msg) => {
     const chatId = msg.chat.id;
     const text = msg.text;
 
+    console.log('Received message:', text);
+
     // Simple NLP processing
     const doc = nlp(text);
     const keywords = doc.nouns().out('array');
@@ -41,12 +43,15 @@ const processMessage = (msg) => {
         bestResponse = responses[Math.floor(Math.random() * responses.length)];
     }
 
+    console.log('Sending response:', bestResponse);
+
     // Send the response back to the user
     bot.sendMessage(chatId, bestResponse);
 };
 
 // Listen for any kind of message
 bot.on('message', (msg) => {
+    console.log('Message received:', msg);
     processMessage(msg);
 });
 

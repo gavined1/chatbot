@@ -10,9 +10,22 @@ exports.handler = async (event, context) => {
     try {
         const body = JSON.parse(event.body);
 
-        if (body.business_message) {
+        // Handle different types of updates
+        if (body.message) {
+            // Standard message update
+            const chatId = body.message.chat.id;
+            const userMessage = body.message.text;
+
+            // Process the user's message
+            const reply = processText(userMessage);
+
+            // Send the response back to the user
+            await bot.sendMessage(chatId, reply);
+        } else if (body.business_message) {
             // Handle business_message updates
             console.log('Business message:', body.business_message);
+
+            // Optionally, you can send a response or take some action based on the business message
         } else if (body.edited_business_message) {
             // Handle edited_business_message updates
             console.log('Edited business message:', body.edited_business_message);
@@ -30,7 +43,7 @@ exports.handler = async (event, context) => {
             }
         }
 
-        // Send a response if needed
+        // Return a success response
         return {
             statusCode: 200,
             body: JSON.stringify({

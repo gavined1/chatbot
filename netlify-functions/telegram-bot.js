@@ -52,14 +52,24 @@ bot.setWebHook(`${process.env.APP_URL}/bot${token}`);
 
 // Handle incoming updates
 exports.handler = async (event, context) => {
-    const body = JSON.parse(event.body);
-    bot.processUpdate(body);
-    return {
-        statusCode: 200,
-        body: JSON.stringify({
-            message: "Update processed"
-        }),
-    };
+    try {
+        const body = JSON.parse(event.body);
+        bot.processUpdate(body);
+        return {
+            statusCode: 200,
+            body: JSON.stringify({
+                message: "Update processed"
+            }),
+        };
+    } catch (error) {
+        console.error('Error processing update:', error);
+        return {
+            statusCode: 400,
+            body: JSON.stringify({
+                message: "Invalid JSON input"
+            }),
+        };
+    }
 };
 
 console.log('Bot is running...');

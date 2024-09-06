@@ -1,14 +1,11 @@
 require('dotenv').config();
 const TelegramBot = require('node-telegram-bot-api');
-const fs = require('fs');
 const nlp = require('compromise');
 const stringSimilarity = require('string-similarity');
+const dataset = require('./data.js'); // Import the dataset from data.js
 
 const token = process.env.TELEGRAM_TOKEN;
 const bot = new TelegramBot(token);
-
-// Load dataset
-const dataset = JSON.parse(fs.readFileSync(__dirname + '/data.json', 'utf8'));
 
 function normalizeInput(input) {
     const doc = nlp(input.toLowerCase()).normalize({

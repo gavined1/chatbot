@@ -50,7 +50,9 @@ const processMessage = (msg) => {
 // Handle incoming updates
 exports.handler = async (event, context) => {
     try {
+        console.log('Received event:', event);
         const body = JSON.parse(event.body);
+        console.log('Parsed body:', body);
         bot.processUpdate(body);
         return {
             statusCode: 200,

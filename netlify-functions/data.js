@@ -178,5 +178,86 @@ module.exports = [{
             "Track your progress regularly and adjust your plan as needed.",
             "Stay motivated by visualizing your success and celebrating milestones along the way."
         ]
+    },
+    {
+        "input": "What’s a good method for taking effective notes?",
+        "response": [
+            "Try the Cornell Method, which involves dividing your page into sections for notes, key points, and a summary.",
+            "Use bullet points or outlines to organize information clearly.",
+            "Highlight or underline key concepts to make them stand out.",
+            "Review and revise your notes regularly to reinforce your learning."
+        ]
+    },
+    {
+        "input": "How can I improve my concentration while studying?",
+        "response": [
+            "Create a study environment that is quiet and free from distractions.",
+            "Use techniques like the Pomodoro Technique, where you study for 25 minutes and then take a 5-minute break.",
+            "Set specific goals for each study session to maintain focus.",
+            "Avoid multitasking and dedicate your full attention to one task at a time."
+        ]
+    },
+    {
+        "input": "What are some strategies for tackling difficult assignments?",
+        "response": [
+            "Break the assignment into smaller, more manageable tasks and tackle them one at a time.",
+            "Start with the parts you find easiest to build momentum.",
+            "Seek help from classmates, instructors, or online resources if you're stuck.",
+            "Allocate enough time for research and revisions to ensure quality work."
+        ]
+    },
+    {
+        "input": "How do I handle stress before exams?",
+        "response": [
+            "Practice relaxation techniques like deep breathing or meditation to calm your nerves.",
+            "Make a study schedule and stick to it to avoid last-minute cramming.",
+            "Get plenty of rest and maintain a healthy diet to keep your body and mind in good shape.",
+            "Reach out to friends, family, or a counselor if you need support."
+        ]
+    },
+    {
+        "input": "What are some effective ways to prepare for a presentation?",
+        "response": [
+            "Practice your presentation multiple times to build confidence and improve delivery.",
+            "Create a clear and engaging outline to guide your presentation.",
+            "Use visual aids like slides or props to enhance your message.",
+            "Prepare for potential questions and practice answering them."
+        ]
+    },
+    {
+        "input": "How can I stay focused during long study sessions?",
+        "response": [
+            "Set specific goals for each study session to keep yourself on track.",
+            "Take regular breaks to avoid burnout and maintain your concentration.",
+            "Use a timer to manage your study intervals and breaks effectively.",
+            "Stay hydrated and have healthy snacks available to keep your energy levels up."
+        ]
+    },
+    {
+        "input": "What should I do if I feel unmotivated?",
+        "response": [
+            "Reflect on your goals and remind yourself of the reasons why they are important to you.",
+            "Set small, achievable tasks to help build momentum and boost your motivation.",
+            "Change your environment or try a new approach to make your tasks more engaging.",
+            "Consider talking to a mentor or friend for encouragement and support."
+        ]
+    },
+    {
+        "input": "How can I better manage my study time?",
+        "response": [
+            "Create a study timetable that allocates specific times for each subject or task.",
+            "Use tools like calendars or time-management apps to organize your study sessions.",
+            "Prioritize tasks based on deadlines and importance to ensure you focus on what's most urgent.",
+            "Avoid procrastination by breaking tasks into smaller steps and starting early."
+        ]
+    },
+    {
+        "input": "Can you give me some tips for improving my writing skills?",
+        "response": [
+            "Read regularly to expose yourself to different writing styles and techniques.",
+            "Practice writing daily, even if it’s just a short journal entry or blog post.",
+            "Seek feedback from others and revise your work based on their suggestions.",
+            "Study grammar and style guides to improve the technical aspects of your writing."
+        ]
     }
 ];

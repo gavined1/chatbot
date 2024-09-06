@@ -1,56 +1,43 @@
-const TelegramBot = require('node-telegram-bot-api');
-const {
+const nlp = require('compromise');
+const natural = require('natural');
+const tokenizer = new natural.WordTokenizer();
+
+// Load your data
+const data = require('./data');
+
+// Create a new instance of the natural classifier
+const classifier = new natural.BayesClassifier();
+
+// Train the classifier with your data
+data.forEach(entry => {
+    entry.input.forEach(input => {
+        classifier.addDocument(input, entry.response);
+    });
+});
+classifier.train();
+
+function processText(userMessage) {
+    const lowerCaseMessage = userMessage.toLowerCase();
+
+    // Tokenize the user message
+    const tokens = tokenizer.tokenize(lowerCaseMessage);
+    console.log("Tokens:", tokens); // Debugging
+
+    // Use compromise to process text
+    const doc = nlp(lowerCaseMessage);
+    const normalizedMessage = doc.normalize().out('text');
+    console.log("Normalized Message:", normalizedMessage); // Debugging
+
+    // Use the natural classifier to predict a response
+    const classified = classifier.classify(normalizedMessage);
+
+    // Return a random response from the classified results
+    const responses = data.flatMap(entry => entry.response);
+    const response = responses[Math.floor(Math.random() * responses.length)];
+
+    return response;
+}
+
+module.exports = {
     processText
-} = require('./custom-library');
-
-const telegramToken = process.env.TELEGRAM_BOT_TOKEN;
-const bot = new TelegramBot(telegramToken);
-
-exports.handler = async (event, context) => {
-    try {
-        const body = JSON.parse(event.body);
-
-        if (body.message) {
-            const chatId = body.message.chat.id;
-            const userMessage = body.message.text;
-
-            // Process the user's message
-            const reply = processText(userMessage);
-
-            // Send the response back to the user
-            await bot.sendMessage(chatId, reply);
-        } else if (body.business_message) {
-            // Handle business_message updates
-            console.log('Business message:', body.business_message);
-        } else if (body.edited_business_message) {
-            // Handle edited_business_message updates
-            console.log('Edited business message:', body.edited_business_message);
-        } else if (body.deleted_business_message) {
-            // Handle deleted_business_message updates
-            console.log('Deleted business message:', body.deleted_business_message);
-        } else if (body.business_connection) {
-            // Handle BusinessConnection updates
-            const connection = body.business_connection;
-            console.log('Business connection:', connection);
-
-            if (connection.can_reply) {
-                console.log('Bot can reply on behalf of the business account');
-            }
-        }
-
-        return {
-            statusCode: 200,
-            body: JSON.stringify({
-                status: 'Update processed'
-            }),
-        };
-    } catch (error) {
-        console.error('Error handling update:', error);
-        return {
-            statusCode: 500,
-            body: JSON.stringify({
-                error: 'Failed to process update'
-            }),
-        };
-    }
 };

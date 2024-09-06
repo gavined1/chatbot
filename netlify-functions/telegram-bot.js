@@ -47,9 +47,6 @@ const processMessage = (msg) => {
     bot.sendMessage(chatId, bestResponse);
 };
 
-// Set up webhook
-bot.setWebHook(`${process.env.APP_URL}/bot${token}`);
-
 // Handle incoming updates
 exports.handler = async (event, context) => {
     try {

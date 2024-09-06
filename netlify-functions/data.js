@@ -259,5 +259,167 @@ module.exports = [{
             "Seek feedback from others and revise your work based on their suggestions.",
             "Study grammar and style guides to improve the technical aspects of your writing."
         ]
+    },
+    {
+        "input": "What are some ways to practice self-care?",
+        "response": [
+            "Take time for activities that you enjoy, such as reading, exercising, or gardening.",
+            "Ensure you get enough sleep and maintain a regular sleep schedule.",
+            "Eat a balanced diet and stay hydrated to support your overall health.",
+            "Set aside time for relaxation and mindfulness practices like meditation or deep breathing."
+        ]
+    },
+    {
+        "input": "How can I manage stress effectively?",
+        "response": [
+            "Identify and address the sources of stress in your life to reduce their impact.",
+            "Practice stress-relief techniques such as meditation, yoga, or deep breathing exercises.",
+            "Engage in regular physical activity to help manage stress and improve your mood.",
+            "Make time for hobbies and activities that bring you joy and relaxation."
+        ]
+    },
+    {
+        "input": "What are some signs that I need to take a break?",
+        "response": [
+            "Feeling constantly tired or drained, even after a good night's sleep.",
+            "Experiencing increased irritability, anxiety, or mood swings.",
+            "Struggling to concentrate or feeling overwhelmed by tasks.",
+            "Noticing a decline in your overall physical or mental well-being."
+        ]
+    },
+    {
+        "input": "How can I improve my work-life balance?",
+        "response": [
+            "Set clear boundaries between work and personal time to avoid burnout.",
+            "Prioritize tasks and delegate responsibilities to manage your workload effectively.",
+            "Schedule regular breaks and time off to recharge and prevent overworking.",
+            "Make time for activities and relationships outside of work to maintain a healthy balance."
+        ]
+    },
+    {
+        "input": "What are some self-care practices for mental health?",
+        "response": [
+            "Engage in regular self-reflection and journaling to process your thoughts and emotions.",
+            "Seek professional support from a therapist or counselor if needed.",
+            "Practice mindfulness and relaxation techniques to manage stress and anxiety.",
+            "Connect with supportive friends or family members to share your feelings and experiences."
+        ]
+    },
+    {
+        "input": "How can I create a self-care routine?",
+        "response": [
+            "Identify activities and practices that make you feel relaxed and rejuvenated.",
+            "Schedule regular time for self-care activities in your daily or weekly routine.",
+            "Set realistic and achievable self-care goals to ensure consistency.",
+            "Adjust your routine as needed based on your evolving needs and preferences."
+        ]
+    },
+    {
+        "input": "What are some ways to practice self-compassion?",
+        "response": [
+            "Treat yourself with the same kindness and understanding that you would offer a friend.",
+            "Practice positive self-talk and challenge negative thoughts about yourself.",
+            "Allow yourself to make mistakes and learn from them without harsh self-judgment.",
+            "Acknowledge and celebrate your achievements, no matter how small they may seem."
+        ]
+    },
+    {
+        "input": "How can I improve my sleep quality?",
+        "response": [
+            "Maintain a consistent sleep schedule by going to bed and waking up at the same time each day.",
+            "Create a relaxing bedtime routine to signal to your body that it's time to wind down.",
+            "Limit exposure to screens and bright lights before bedtime to improve sleep quality.",
+            "Ensure your sleep environment is comfortable, cool, and quiet to promote restful sleep."
+        ]
+    },
+    {
+        "input": "What are some ways to practice gratitude?",
+        "response": [
+            "Keep a gratitude journal and write down things you're thankful for each day.",
+            "Express appreciation to others through kind words or gestures.",
+            "Reflect on positive experiences and moments of joy in your life regularly.",
+            "Engage in mindfulness practices that help you focus on the present moment and what you value."
+        ]
+    },
+    {
+        "input": "What are the signs of a mental breakdown?",
+        "response": [
+            "Extreme mood swings or emotional instability.",
+            "Feeling overwhelmed, anxious, or unable to cope with daily tasks.",
+            "Experiencing severe fatigue, trouble sleeping, or changes in appetite.",
+            "Difficulty concentrating, making decisions, or feeling detached from reality."
+        ]
+    },
+    {
+        "input": "How can I support someone who is experiencing a mental breakdown?",
+        "response": [
+            "Listen without judgment and offer a supportive, empathetic ear.",
+            "Encourage them to seek professional help from a therapist or counselor.",
+            "Help them find and access mental health resources or support groups.",
+            "Offer practical assistance, like helping with daily tasks or appointments, if appropriate."
+        ]
+    },
+    {
+        "input": "What should I do if I feel like I'm having a mental breakdown?",
+        "response": [
+            "Reach out to a mental health professional or counselor for support.",
+            "Talk to trusted friends or family members about what you're experiencing.",
+            "Practice stress-relief techniques like deep breathing, mindfulness, or relaxation exercises.",
+            "Take a break from overwhelming situations and engage in self-care activities to recharge."
+        ]
+    },
+    {
+        "input": "How can I recognize when I need to take a mental health break?",
+        "response": [
+            "Notice if you're feeling persistently overwhelmed, exhausted, or emotionally drained.",
+            "Recognize signs of burnout, such as decreased motivation, productivity, or satisfaction.",
+            "Pay attention to physical symptoms like headaches, muscle tension, or trouble sleeping.",
+            "Acknowledge if you're struggling to cope with daily responsibilities or maintaining relationships."
+        ]
+    },
+    {
+        "input": "What are some effective coping strategies for managing anxiety?",
+        "response": [
+            "Practice mindfulness and relaxation techniques to calm your mind and body.",
+            "Engage in regular physical exercise to help reduce anxiety levels.",
+            "Challenge negative or irrational thoughts and focus on positive, realistic thinking.",
+            "Establish a support network and talk to others about your feelings and concerns."
+        ]
+    },
+    {
+        "input": "How can I address feelings of depression or hopelessness?",
+        "response": [
+            "Seek professional help from a therapist or counselor who can provide support and treatment.",
+            "Reach out to supportive friends or family members to share your feelings and gain perspective.",
+            "Engage in activities that bring you joy and a sense of accomplishment, even if they seem small.",
+            "Practice self-care and maintain a routine to help manage symptoms and improve your well-being."
+        ]
+    },
+    {
+        "input": "What are some signs that I should seek professional help for my mental health?",
+        "response": [
+            "Experiencing persistent or severe emotional distress, such as anxiety or depression.",
+            "Having thoughts of self-harm or harming others, or experiencing a significant loss of control.",
+            "Struggling to function in daily life or maintain relationships due to mental health issues.",
+            "Feeling overwhelmed by emotions or thoughts that you can't manage on your own."
+        ]
+    },
+    {
+        "input": "What can I do to improve my mental well-being?",
+        "response": [
+            "Engage in regular physical activity and maintain a healthy diet to support overall health.",
+            "Practice mindfulness, meditation, or relaxation exercises to manage stress and improve focus.",
+            "Maintain a routine that includes time for self-care, hobbies, and social interactions.",
+            "Seek support from mental health professionals and build a strong support network of friends and family."
+        ]
+    },
+    {
+        "input": "How can I manage work-related stress and prevent burnout?",
+        "response": [
+            "Set clear boundaries between work and personal time to avoid overworking.",
+            "Prioritize tasks and delegate responsibilities to manage your workload effectively.",
+            "Take regular breaks throughout the day to rest and recharge.",
+            "Seek support from supervisors or colleagues if you’re feeling overwhelmed, and consider discussing workload adjustments or accommodations."
+        ]
     }
 ];

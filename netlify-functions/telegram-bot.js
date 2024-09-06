@@ -51,3 +51,13 @@ bot.on('message', (msg) => {
 });
 
 console.log('Bot is running...');
+
+// Export the handler function
+exports.handler = async (event, context) => {
+    return {
+        statusCode: 200,
+        body: JSON.stringify({
+            message: "Bot is running..."
+        }),
+    };
+};

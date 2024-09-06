@@ -1,27 +1,30 @@
-// custom-library.js
 const nlp = require('compromise');
+const spacy = require('spacy');
 
-const responses = require('./data');
+// Load spaCy model
+const nlpSpaCy = spacy.load('en_core_web_sm');
 
-function processText(userMessage) {
-    // Use compromise to analyze the message
-    let doc = nlp(userMessage);
+function processText(text) {
+    // Use compromise for basic text processing
+    let doc = nlp(text);
+    let response = "I'm not sure how to respond to that.";
 
-    // Basic text normalization and analysis
-    let normalizedText = doc.text().toLowerCase();
+    // Use spaCy for more advanced NLP tasks
+    const spacyDoc = nlpSpaCy(text);
+    const entities = spacyDoc.ents.map(ent => ent.text);
 
-    // Find matching response
-    for (const item of responses) {
-        for (const input of item.input) {
-            if (normalizedText.includes(input.toLowerCase())) {
-                // Return a random response from the matched responses
-                return item.response[Math.floor(Math.random() * item.response.length)];
-            }
+    if (entities.length > 0) {
+        // Basic response based on identified entities
+        response = `I see you're talking about ${entities.join(', ')}. How can I help with that?`;
+    } else {
+        // Use compromise for simple intent recognition
+        const match = doc.match('hello|hi|hey');
+        if (match.found) {
+            response = "Hello! How can I assist you today?";
         }
     }
 
-    // Default response if no match found
-    return "Sorry, I didn't understand that. Can you rephrase?";
+    return response;
 }
 
 module.exports = {

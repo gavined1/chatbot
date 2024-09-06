@@ -47,13 +47,31 @@ const processMessage = (msg) => {
     bot.sendMessage(chatId, bestResponse);
 };
 
+// Function to handle different types of updates
+const handleUpdate = (update) => {
+    if (update.message) {
+        processMessage(update.message);
+    } else if (update.edited_message) {
+        console.log('Edited message:', update.edited_message);
+        // Handle edited messages
+    } else if (update.channel_post) {
+        console.log('Channel post:', update.channel_post);
+        // Handle channel posts
+    } else if (update.edited_channel_post) {
+        console.log('Edited channel post:', update.edited_channel_post);
+        // Handle edited channel posts
+    } else {
+        console.log('Unknown update type:', update);
+    }
+};
+
 // Handle incoming updates
 exports.handler = async (event, context) => {
     try {
         console.log('Received event:', event);
         const body = JSON.parse(event.body);
         console.log('Parsed body:', body);
-        bot.processUpdate(body);
+        handleUpdate(body);
         return {
             statusCode: 200,
             body: JSON.stringify({

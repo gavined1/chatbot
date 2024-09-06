@@ -61,5 +61,122 @@ module.exports = [{
             "You're not alone in feeling that way. Tell me what’s confusing you, and I’ll do my best to help.",
             "It’s normal to feel that way sometimes. Let’s tackle this together—what’s on your mind?"
         ]
+    },
+    {
+        "input": "Can you help me with my project?",
+        "response": [
+            "Sure! What specific aspects of your project do you need help with?",
+            "I’d be happy to help with your project. Please provide some details on what you need.",
+            "Of course! Tell me more about your project, and I’ll do my best to assist.",
+            "Let me know what you need help with on your project, and I’ll provide guidance."
+        ]
+    },
+    {
+        "input": "What is the best way to stay organized?",
+        "response": [
+            "A good way to stay organized is to use a planner or digital calendar to track tasks.",
+            "You might find it helpful to create a to-do list and prioritize your tasks.",
+            "Try using organizational tools like project management apps or time-blocking techniques.",
+            "Maintaining a routine and setting clear goals can also help with staying organized."
+        ]
+    },
+    {
+        "input": "Can you give me some tips for studying?",
+        "response": [
+            "Sure! Make a study schedule and stick to it to ensure regular study sessions.",
+            "Try breaking your study material into smaller, manageable chunks.",
+            "Use active learning techniques like summarizing information or teaching it to someone else.",
+            "Make sure to take breaks and stay hydrated to keep your mind sharp."
+        ]
+    },
+    {
+        "input": "What are some good hobbies to try?",
+        "response": [
+            "Consider trying hobbies like reading, painting, or cooking.",
+            "You might enjoy activities such as hiking, knitting, or playing a musical instrument.",
+            "Exploring hobbies like gardening, photography, or writing could also be fun.",
+            "Find something that interests you and gives you a sense of fulfillment."
+        ]
+    },
+    {
+        "input": "Can you give me some study tips?",
+        "response": [
+            "Certainly! Try breaking your study sessions into shorter, focused periods with regular breaks.",
+            "Use active learning techniques like summarizing information or teaching it to someone else.",
+            "Create a study schedule and stick to it to keep yourself organized.",
+            "Make sure to find a quiet, comfortable study environment free from distractions."
+        ]
+    },
+    {
+        "input": "How can I stay motivated while studying?",
+        "response": [
+            "Set clear, achievable goals to give yourself a sense of progress.",
+            "Reward yourself for reaching milestones or completing tasks.",
+            "Stay positive and remind yourself of the reasons why you're studying.",
+            "Try to find study partners or groups for added motivation and accountability."
+        ]
+    },
+    {
+        "input": "What are some effective ways to manage my time?",
+        "response": [
+            "Use a planner or digital calendar to schedule your tasks and deadlines.",
+            "Prioritize your tasks based on importance and urgency.",
+            "Try time-blocking by allocating specific times for different activities.",
+            "Avoid multitasking; focus on one task at a time to increase efficiency."
+        ]
+    },
+    {
+        "input": "How do I solve this math problem?",
+        "response": [
+            "To solve a math problem, start by identifying what you need to find.",
+            "Break the problem into smaller, manageable steps and solve each one.",
+            "Check your work by substituting your answer back into the original problem.",
+            "If you're still stuck, try looking for similar problems or examples online for guidance."
+        ]
+    },
+    {
+        "input": "Can you suggest some good motivational quotes?",
+        "response": [
+            "\"The only way to do great work is to love what you do.\" – Steve Jobs",
+            "\"Success is not the key to happiness. Happiness is the key to success.\" – Albert Schweitzer",
+            "\"Believe you can and you're halfway there.\" – Theodore Roosevelt",
+            "\"The future belongs to those who believe in the beauty of their dreams.\" – Eleanor Roosevelt"
+        ]
+    },
+    {
+        "input": "What should I do if I feel overwhelmed with my workload?",
+        "response": [
+            "Try breaking your tasks into smaller, more manageable chunks.",
+            "Prioritize your tasks and focus on the most important ones first.",
+            "Take short breaks to clear your mind and reduce stress.",
+            "Consider talking to a mentor or counselor for additional support and advice."
+        ]
+    },
+    {
+        "input": "How can I improve my problem-solving skills?",
+        "response": [
+            "Practice solving a variety of problems regularly to build your skills.",
+            "Learn different problem-solving strategies and techniques.",
+            "Break down complex problems into smaller, more manageable parts.",
+            "Work on puzzles and brainteasers to enhance your critical thinking."
+        ]
+    },
+    {
+        "input": "What are some good ways to stay organized?",
+        "response": [
+            "Use a planner or app to track your tasks, deadlines, and appointments.",
+            "Keep your workspace clean and decluttered to improve focus.",
+            "Create to-do lists and prioritize your tasks each day.",
+            "Establish a routine and stick to it to maintain consistency."
+        ]
+    },
+    {
+        "input": "Can you give me some tips for setting and achieving goals?",
+        "response": [
+            "Set specific, measurable, achievable, relevant, and time-bound (SMART) goals.",
+            "Break your goals into smaller, actionable steps and create a plan to achieve them.",
+            "Track your progress regularly and adjust your plan as needed.",
+            "Stay motivated by visualizing your success and celebrating milestones along the way."
+        ]
     }
 ];

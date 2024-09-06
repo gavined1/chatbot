@@ -1,2 +1,7 @@
 [build]
   functions = "netlify-functions"
+
+[[redirects]]
+  from = "/bot*"
+  to = "/.netlify/functions/telegram-bot"
+  status = 200

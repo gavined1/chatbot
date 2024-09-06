@@ -14,6 +14,11 @@ function normalizeInput(input) {
     }).out('text');
     return doc;
 }
+// Handle /start command
+bot.onText(/\/start/, (msg) => {
+    console.log(`Received /start command from ${msg.from.username || 'User'} (${msg.from.id})`);
+    bot.sendMessage(msg.chat.id, 'Hello! I am your AI assistant. Ask me anything!');
+});
 
 function findResponse(userMessage) {
     const normalizedMessage = normalizeInput(userMessage);

@@ -1,17 +1,29 @@
-// functions/custom-library.js
+// custom-library.js
+const nlp = require('compromise');
 
-/**
- * A sample function that processes text.
- * @param {string} text - The text to process.
- * @returns {string} - The processed text.
- */
-function processText(text) {
-    // Sample processing: reverse the text and add a suffix
-    const reversedText = text.split('').reverse().join('');
-    return `${reversedText}`;
+const responses = require('./data');
+
+function processText(userMessage) {
+    // Use compromise to analyze the message
+    let doc = nlp(userMessage);
+
+    // Basic text normalization and analysis
+    let normalizedText = doc.text().toLowerCase();
+
+    // Find matching response
+    for (const item of responses) {
+        for (const input of item.input) {
+            if (normalizedText.includes(input.toLowerCase())) {
+                // Return a random response from the matched responses
+                return item.response[Math.floor(Math.random() * item.response.length)];
+            }
+        }
+    }
+
+    // Default response if no match found
+    return "Sorry, I didn't understand that. Can you rephrase?";
 }
 
-// Export the function for use in other files
 module.exports = {
     processText
 };

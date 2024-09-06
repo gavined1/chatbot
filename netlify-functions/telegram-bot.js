@@ -8,7 +8,7 @@ const token = process.env.TELEGRAM_TOKEN;
 const bot = new TelegramBot(token);
 
 // Load dataset
-const dataset = JSON.parse(fs.readFileSync('data.json', 'utf8'));
+const dataset = JSON.parse(fs.readFileSync(__dirname + '/data.json', 'utf8'));
 
 function normalizeInput(input) {
     const doc = nlp(input.toLowerCase()).normalize({

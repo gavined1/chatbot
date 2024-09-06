@@ -8,7 +8,7 @@
 function processText(text) {
     // Sample processing: reverse the text and add a suffix
     const reversedText = text.split('').reverse().join('');
-    return `Processed text: ${reversedText}`;
+    return `${reversedText}`;
 }
 
 // Export the function for use in other files

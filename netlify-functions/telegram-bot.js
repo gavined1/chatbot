@@ -36,5 +36,24 @@ bot.on('message', (msg) => {
     // Send the response to the user
     bot.sendMessage(chatId, response);
 });
+// netlify-functions/telegram-bot.js
+exports.handler = async (event, context) => {
+    try {
+        // Your bot logic goes here
+        return {
+            statusCode: 200,
+            body: JSON.stringify({
+                message: "Function executed successfully"
+            }),
+        };
+    } catch (error) {
+        return {
+            statusCode: 500,
+            body: JSON.stringify({
+                error: "Function failed to execute"
+            }),
+        };
+    }
+};
 
 console.log('Bot is up and running...');

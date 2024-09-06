@@ -5,7 +5,9 @@ const stringSimilarity = require('string-similarity');
 const dataset = require('./data.js'); // Import the dataset from data.js
 
 const token = process.env.TELEGRAM_TOKEN;
-const bot = new TelegramBot(token);
+const bot = new TelegramBot(token, {
+    polling: false
+}); // Polling disabled in production
 
 // Function to find the best response from the dataset
 function findBestResponse(input) {
@@ -18,11 +20,15 @@ function findBestResponse(input) {
 
 // This is the function that will handle the incoming updates
 async function handleUpdate(update) {
-    const chatId = update.message.chat.id;
-    const userMessage = update.message.text;
+    if (update.message && update.message.text) {
+        const chatId = update.message.chat.id;
+        const userMessage = update.message.text;
 
-    const response = findBestResponse(userMessage);
-    await bot.sendMessage(chatId, response);
+        const response = findBestResponse(userMessage);
+        await bot.sendMessage(chatId, response);
+    } else {
+        console.error('Invalid update format:', update);
+    }
 }
 
 // Netlify function to handle the webhook
@@ -57,10 +63,16 @@ exports.handler = async (event, context) => {
     }
 };
 
-// Set webhook URL
+// Set webhook URL - Run this once or manually as needed
 async function setWebhook() {
     const url = `https://magenta-vacherin-fcf7f7.netlify.app/.netlify/functions/telegram-bot`; // Replace with your Netlify function URL
-    await bot.setWebHook(url);
+    try {
+        await bot.setWebHook(url);
+        console.log('Webhook set successfully');
+    } catch (error) {
+        console.error('Error setting webhook:', error);
+    }
 }
 
-setWebhook().catch(console.error);
+// Uncomment to set the webhook on start (use carefully)
+// setWebhook().catch(console.error);

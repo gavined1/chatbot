@@ -1,6 +1,11 @@
-[functions]
-directory = "netlify-functions"
+[build]
+  functions = "netlify-functions"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
 
 [[functions]]
-name = "telegram-bot"
-path = "netlify-functions/telegram-bot.js"
+  name = "telegram-bot"
+  path = "netlify-functions/telegram-bot.js"

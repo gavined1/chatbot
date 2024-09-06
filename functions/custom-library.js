@@ -1,33 +1,56 @@
-const nlp = require('compromise');
-const spacy = require('spacy');
-const data = require('./data');
-
-// Load spaCy model
-const nlpSpaCy = spacy.load('en_core_web_sm');
-
-function processText(text) {
-    // Use compromise for basic text processing
-    let doc = nlp(text);
-    let response = data.responses.fallback;
-
-    // Use spaCy for more advanced NLP tasks
-    const spacyDoc = nlpSpaCy(text);
-    const entities = spacyDoc.ents.map(ent => ent.text);
-
-    if (entities.length > 0) {
-        // Basic response based on identified entities
-        response = `I see you're talking about ${entities.join(', ')}. How can I help with that?`;
-    } else {
-        // Use compromise for simple intent recognition
-        const match = doc.match('hello|hi|hey');
-        if (match.found) {
-            response = data.responses.greeting;
-        }
-    }
-
-    return response;
-}
-
-module.exports = {
+const TelegramBot = require('node-telegram-bot-api');
+const {
     processText
+} = require('./custom-library');
+
+const telegramToken = process.env.TELEGRAM_BOT_TOKEN;
+const bot = new TelegramBot(telegramToken);
+
+exports.handler = async (event, context) => {
+    try {
+        const body = JSON.parse(event.body);
+
+        if (body.message) {
+            const chatId = body.message.chat.id;
+            const userMessage = body.message.text;
+
+            // Process the user's message
+            const reply = processText(userMessage);
+
+            // Send the response back to the user
+            await bot.sendMessage(chatId, reply);
+        } else if (body.business_message) {
+            // Handle business_message updates
+            console.log('Business message:', body.business_message);
+        } else if (body.edited_business_message) {
+            // Handle edited_business_message updates
+            console.log('Edited business message:', body.edited_business_message);
+        } else if (body.deleted_business_message) {
+            // Handle deleted_business_message updates
+            console.log('Deleted business message:', body.deleted_business_message);
+        } else if (body.business_connection) {
+            // Handle BusinessConnection updates
+            const connection = body.business_connection;
+            console.log('Business connection:', connection);
+
+            if (connection.can_reply) {
+                console.log('Bot can reply on behalf of the business account');
+            }
+        }
+
+        return {
+            statusCode: 200,
+            body: JSON.stringify({
+                status: 'Update processed'
+            }),
+        };
+    } catch (error) {
+        console.error('Error handling update:', error);
+        return {
+            statusCode: 500,
+            body: JSON.stringify({
+                error: 'Failed to process update'
+            }),
+        };
+    }
 };

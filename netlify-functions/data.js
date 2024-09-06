@@ -18,24 +18,6 @@ module.exports = [{
         ]
     },
     {
-        "input": "Can you tell me about the weather in Paris?",
-        "response": [
-            "Sure! I can provide weather updates. Let me check the latest information for Paris.",
-            "The weather in Paris? Let me fetch the latest details for you.",
-            "I'll find the current weather in Paris for you. Just a moment.",
-            "Let's see what's happening weather-wise in Paris right now!"
-        ]
-    },
-    {
-        "input": "What time does the store close?",
-        "response": [
-            "The store usually closes at 8 PM, but it's best to check the store's website for exact timings.",
-            "Most stores close around 8 PM, but I recommend verifying online for the most accurate information.",
-            "Store closing times can vary, but 8 PM is typical. Double-checking with the store would be a good idea.",
-            "Typically, stores close at 8 PM, though it’s always best to confirm via the store's site."
-        ]
-    },
-    {
         "input": "xhc@#^ 12345 y&*(%",
         "response": [
             "I'm sorry, I didn't quite understand that. Could you please rephrase your question?",
@@ -54,15 +36,6 @@ module.exports = [{
         ]
     },
     {
-        "input": "I need help with my order. It's been delayed and I don't know why.",
-        "response": [
-            "I’m sorry to hear that. Let me check the status of your order and get back to you.",
-            "Oh no, that's frustrating! I'll look into your order delay and update you soon.",
-            "I understand how you feel. Let me investigate your order delay right away.",
-            "Sorry about the delay. Let me find out what's going on with your order."
-        ]
-    },
-    {
         "input": "Blah blah blah, I’m not sure what’s happening.",
         "response": [
             "It sounds like you might be feeling confused. Can you provide more details so I can assist you better?",
@@ -78,15 +51,6 @@ module.exports = [{
             "Sure! AI, blockchain, and quantum computing are some of the latest buzz in tech.",
             "Happy to help! The current tech trends include AI, cybersecurity, and cloud computing.",
             "Tech trends are evolving fast! AI and blockchain are still leading the way."
-        ]
-    },
-    {
-        "input": "Wher is da nearest cofee shop?",
-        "response": [
-            "I think you're asking about the nearest coffee shop. Let me find that information for you.",
-            "Looking for the closest coffee shop? I'll get that info for you right away.",
-            "Nearest coffee shop coming right up! Let me find the latest locations.",
-            "I’ll help you find the nearest coffee shop. Just a moment!"
         ]
     },
     {

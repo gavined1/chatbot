@@ -5,9 +5,7 @@ const stringSimilarity = require('string-similarity');
 const dataset = require('./data.js'); // Import the dataset from data.js
 
 const token = process.env.TELEGRAM_TOKEN;
-const bot = new TelegramBot(token, {
-    polling: true
-});
+const bot = new TelegramBot(token);
 
 // Function to process user messages
 const processMessage = (msg) => {
@@ -49,20 +47,19 @@ const processMessage = (msg) => {
     bot.sendMessage(chatId, bestResponse);
 };
 
-// Listen for any kind of message
-bot.on('message', (msg) => {
-    console.log('Message received:', msg);
-    processMessage(msg);
-});
+// Set up webhook
+bot.setWebHook(`${process.env.APP_URL}/bot${token}`);
 
-console.log('Bot is running...');
-
-// Export the handler function
+// Handle incoming updates
 exports.handler = async (event, context) => {
+    const body = JSON.parse(event.body);
+    bot.processUpdate(body);
     return {
         statusCode: 200,
         body: JSON.stringify({
-            message: "Bot is running..."
+            message: "Update processed"
         }),
     };
 };
+
+console.log('Bot is running...');
